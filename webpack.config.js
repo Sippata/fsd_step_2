@@ -5,6 +5,19 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
+const cssLoaders = (extra) => {
+    const loaders = [
+        'style-loader',
+        'css-loader',
+    ]
+
+    if (extra) {
+        loaders = [...loaders, extra]
+    }
+
+    return loaders;
+}
+
 /** @type {import('webpack').Configuration} */
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -27,10 +40,11 @@ module.exports = {
         rules: [
             {
                 test: /\.css/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                ]
+                use: cssLoaders()
+            },
+            {
+                test: /\.s[ac]ss/,
+                use: cssLoaders('sass-loader')
             },
             {
                 test: /\.pug/,
