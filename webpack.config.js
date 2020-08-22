@@ -3,6 +3,8 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
+const isDev = process.env.NODE_ENV === 'development';
+
 /** @type {import('webpack').Configuration} */
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -10,6 +12,10 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
+    },
+    devtool: isDev ? 'source-map' : '',
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
     },
     plugins: [
         new CleanWebpackPlugin(),
