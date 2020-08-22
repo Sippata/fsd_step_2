@@ -1,1 +1,8 @@
-.vscode
+# vscode specific settings
+.vscode/
+
+# deps
+node_modules/
+
+# build
+dist/
