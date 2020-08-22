@@ -20,7 +20,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
-            template: './index.html'
+            template: './index.pug'
         }),
     ],
     module: {
@@ -30,6 +30,12 @@ module.exports = {
                 use: [
                     'style-loader',
                     'css-loader',
+                ]
+            },
+            {
+                test: /\.pug/,
+                use: [
+                    'pug-loader'
                 ]
             }
         ]
