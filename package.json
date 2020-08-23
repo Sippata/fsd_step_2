@@ -2,7 +2,7 @@
   "name": "fsd_step_2",
   "version": "0.0.0",
   "description": "Designed to train the frontend",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
