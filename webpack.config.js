@@ -26,6 +26,11 @@ module.exports = {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
     },
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+        }
+    },
     devtool: isDev ? 'source-map' : '',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
