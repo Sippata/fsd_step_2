@@ -1,1 +1,1 @@
-import './style.css';
+import './common.blocks/widget-title/widget-title.scss';

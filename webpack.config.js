@@ -48,16 +48,20 @@ const optimization = () => {
 /** @type {import('webpack').Configuration} */
 module.exports = {
     context: path.resolve(__dirname, 'src'),
+    resolve: {
+        alias: {
+            '@fonts': path.resolve(__dirname, 'src/assets/fonts'),
+            '@': path.resolve(__dirname, 'src')
+        }
+    },
     entry: './index.js',
     output: {
-        filename: '[name].[contenthash].js',
+        filename: '[name].[hash].js',
         path: path.resolve(__dirname, 'dist'),
     },
-    optimization: optimization(),
     devtool: isDev ? 'source-map' : '',
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
-        hot: isDev,
+        port: 3000,
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -65,7 +69,7 @@ module.exports = {
             template: './index.pug',
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: '[name].[hash].css'
         }),
     ],
     module: {
@@ -83,6 +87,12 @@ module.exports = {
                 use: [
                     'pug-loader'
                 ],
+            },
+            {
+                test: /\.(ttf|woff|svg)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     }
