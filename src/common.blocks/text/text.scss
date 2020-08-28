@@ -1,0 +1,11 @@
+@import './_label/text_label.scss';
+@import './_sub-title/text_sub-title.scss';
+@import './_title/text_title.scss';
+
+.text {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    color: #1F2041;
+    line-height: 24px;
+}
