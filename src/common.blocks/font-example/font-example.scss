@@ -1,0 +1,7 @@
+@import "./__label/font-example__label.scss";
+
+.font-example {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-row-gap: 25px;
+}
