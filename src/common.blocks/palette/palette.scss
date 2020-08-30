@@ -1,0 +1,9 @@
+@import './__cell/palette__cell.scss';
+@import './__color-code/palette__color-code.scss';
+@import './__label/palette__label.scss';
+
+.palette {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-row-gap: 20px;
+}

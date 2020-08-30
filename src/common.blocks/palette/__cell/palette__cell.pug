@@ -1,0 +1,16 @@
+mixin palette__cell(color)
+    -
+        const modifiers = { 
+            "Dark Shade 100%": "dark-100",
+            "Dark Shade 75%": "dark-75",
+            "Dark Shade 50%": "dark-50",
+            "Dark Shade 25%": "dark-25",
+            "Dark Shade 5%": "dark-5",
+            "Purple": "primary",
+            "Green": "secondary"
+        }
+        const mod = 'palette__cell_' + modifiers[color]
+    if color
+        .palette__cell(class=mod)
+    else
+        .palette__cell

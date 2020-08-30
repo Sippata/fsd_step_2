@@ -1,0 +1,19 @@
+include ./__cell/palette__cell.pug
+include ./__label/palette__label.pug
+
+
+mixin palette
+    -
+        const items = { 
+            "Dark Shade 100%": "#1F2041",
+            "Dark Shade 75%": "#1F2041",
+            "Dark Shade 50%": "#1F2041",
+            "Dark Shade 25%": "#1F2041",
+            "Dark Shade 5%": "#1F2041",
+            "Purple": "#BC9CFF",
+            "Green": "#6FCF97",
+        }
+    .palette
+        each code, name in items
+            +palette__cell(name)
+            +palette__label(name, code)

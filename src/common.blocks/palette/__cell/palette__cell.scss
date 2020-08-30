@@ -1,0 +1,17 @@
+@import './_dark-100/palette__cell_dark-100.scss';
+@import './_dark-75/palette__cell_dark-75.scss';
+@import './_dark-50/palette__cell_dark-50.scss';
+@import './_dark-25/palette__cell_dark-25.scss';
+@import './_dark-5/palette__cell_dark-5.scss';
+@import './primary/palette__cell_primary.scss';
+@import './secondary/palette__cell_secondary.scss';
+
+
+$border-radius: 6 / 0.7;
+
+.palette__cell {
+    width: 70px;
+    height: 70px;
+    margin-right: 40px;
+    border-radius: $border-radius#{'%'};
+}
