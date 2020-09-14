@@ -2,22 +2,13 @@ const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev;
 
 const cssLoaders = (extra) => {
     let loaders = [
-        {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-                hmr: isDev,
-                reloadAll: true,
-            }
-        },
+        'style-loader',
         'css-loader',
     ]
 
@@ -26,23 +17,6 @@ const cssLoaders = (extra) => {
     }
 
     return loaders;
-}
-
-const optimization = () => {
-    const config = {
-        splitChunks: {
-            chunks: "all",
-        },
-    }
-
-    if (isProd) {
-        config.minimizer = [
-            new OptimizeCssAssetsPlugin(),
-            new TerserWebpackPlugin(),
-        ]
-    }
-
-    return config;
 }
 
 /** @type {import('webpack').Configuration} */
@@ -56,7 +30,7 @@ module.exports = {
     },
     entry: './index.js',
     output: {
-        filename: '[name].[hash].js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
     },
     devtool: isDev ? 'source-map' : '',
@@ -64,32 +38,43 @@ module.exports = {
         port: 3000,
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new HTMLWebpackPlugin({
             template: './index.pug',
         }),
-        new MiniCssExtractPlugin({
-            filename: '[name].[hash].css'
-        }),
+        new CleanWebpackPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src', 'assets', 'img'),
+                    to: path.resolve(__dirname, 'dist')
+                },
+            ]
+        })
     ],
     module: {
         rules: [
             {
-                test: /\.css/,
+                test: /\.css$/,
                 use: cssLoaders()
             },
             {
-                test: /\.s[ac]ss/,
+                test: /\.s[ac]ss$/,
                 use: cssLoaders('sass-loader'),
             },
             {
-                test: /\.pug/,
+                test: /\.pug$/,
                 use: [
                     'pug-loader'
                 ],
             },
             {
                 test: /\.(ttf|woff|svg)$/,
+                use: [
+                    'file-loader'
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     'file-loader'
                 ]
