@@ -13,7 +13,7 @@ mixin palette
             "Purple": "#BC9CFF",
             "Green": "#6FCF97",
         }
-    .palette
+    .palette&attributes(attributes)
         each code, name in items
             +palette__cell(name)
             +palette__label(name, code)

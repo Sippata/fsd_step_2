@@ -6,10 +6,8 @@ mixin item(label, text)
             'h3': 'text_label',
             'body': 'text'
         }
-    //- div(class=mapLabelToClass[label]).font-example__label= label
-    div(class="font-example__label", class=mapLabelToClass[label])= label
-    //- div(class=mapLabelToClass[label]).font-example__text= text
-    div(class="font-example__text", class=mapLabelToClass[label])= text
+    .font-example__label(class=mapLabelToClass[label])= label
+    .font-example__text(class=mapLabelToClass[label])= text
 
 mixin font-example
     - 
@@ -19,7 +17,7 @@ mixin font-example
             'h3': 'This is a label or CTA text',
             'body': 'This is the body text which is used for most of the design, like paragraphs, lists, etc.'
         }
-    .font-example
+    .font-example&attributes(attributes)
         each text, label in examples
             +item(label, text)
     

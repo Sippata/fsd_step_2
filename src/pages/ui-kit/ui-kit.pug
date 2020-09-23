@@ -1,0 +1,14 @@
+include ../../common.blocks/logo-sign/logo-sign.pug
+
+<!DOCTYPE html>
+html(lang="en" class="text")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title 
+            block title
+    body
+        header.ui-kit__header
+            +logo-sign(class="ui-kit__logo")
+        main.ui-kit__main
+            block content

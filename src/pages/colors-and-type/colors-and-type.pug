@@ -1,0 +1,12 @@
+extends ../ui-kit/ui-kit.pug
+
+include ../../common.blocks/font-example/font-example.pug
+include ../../common.blocks/palette/palette.pug
+
+block title
+    ="Color&Types"
+
+block content
+    +palette(class="colors-and-type__palette")
+    +font-example(class="colors-and-type__font-example")
+    
