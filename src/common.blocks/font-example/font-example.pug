@@ -1,13 +1,13 @@
 mixin item(label, text)
     - 
-        const mapLabelToClass = {
+        const classes = {
             'h1': 'text_title',
             'h2': 'text_sub-title',
             'h3': 'text_label',
             'body': 'text'
         }
-    .font-example__label(class=mapLabelToClass[label])= label
-    .font-example__text(class=mapLabelToClass[label])= text
+    .font-example__label(class=classes[label])= label
+    .font-example__text(class=classes[label])= text
 
 mixin font-example
     - 
